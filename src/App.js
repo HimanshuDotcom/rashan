@@ -1,5 +1,6 @@
 import Item from './components/Item.js';
 import Header from './components/Header';
+import Items from './components/Items';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -7,8 +8,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="container">
-        <Item name="Bura" />
-        <Item name="Sugar" />
+        <Items />
       </div>
     </div>
   );

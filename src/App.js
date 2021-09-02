@@ -1,12 +1,15 @@
 import Item from './components/Item.js';
 import Header from './components/Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <Header name="2021 list" />
-      <Item name="Bura" />
-      <Item name="Chinni" />
+      <Header />
+      <div className="container">
+        <Item name="Bura" />
+        <Item name="Sugar" />
+      </div>
     </div>
   );
 }

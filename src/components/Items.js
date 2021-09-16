@@ -19,12 +19,23 @@ class Items extends Component {
             }
         ]
     };
+    deleteItem = (id) => {
+        const { items } = this.state;
+        const updatedItems = items.filter(item => item.id !== id);
+        this.setState({
+            items: updatedItems
+        })
+
+    }
     render() {
         const { items } = this.state;
         return (
             <>
                 {items.map(item => (
-                    <Item key={item.id} name={item.name} cp={item.cp} sp={item.sp} />
+                    <Item key={item.id} 
+                        item = {item} 
+                        deleteItem = {() => this.deleteItem(item.id)}
+                    />
                 ))}
             </>
         )

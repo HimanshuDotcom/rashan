@@ -1,4 +1,3 @@
-import Item from './components/Item.js';
 import Header from './components/Header';
 import Items from './components/Items';
 import 'bootstrap/dist/css/bootstrap.min.css';

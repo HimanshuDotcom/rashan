@@ -13,19 +13,27 @@ class Item extends Component {
     }
 
     render() {
+        const {name, cp , sp} = this.props.item;
         return (
             <div className="card card-body mb-3">
                 <h4>
-                    {this.props.name}
+                    {name}
                     <i
                         onClick={this.showItem}
-                        className="ml-1 fa fa-sort-down"
-                        style={{ cursor: "pointer" }}></i>
+                        className="ml-1 mr-auto fa fa-sort-down"
+                        style={{ cursor: "pointer" }}>
+                    </i>
+                    <i
+                        className=" fa fa-times"
+                        onClick = {this.props.deleteItem}
+                        style = {{ float: 'right', cursor: 'pointer', color: 'red' }}
+                        >
+                    </i>
                 </h4>
                 {this.state.showInfo ?
                     (<ul className="list-group">
-                        <li className="list-group-item">Cost Price : {this.props.cp}</li>
-                        <li className="list-group-item">Selling Price : {this.props.sp}</li>
+                        <li className="list-group-item">Cost Price : {cp}</li>
+                        <li className="list-group-item">Selling Price : {sp}</li>
                     </ul>)
                     :
                     null
@@ -37,9 +45,8 @@ class Item extends Component {
 }
 
 Item.propTypes = {
-    name: PropTypes.string.isRequired,
-    cp: PropTypes.number.isRequired,
-    sp: PropTypes.number.isRequired
+    item: PropTypes.object.isRequired,
+    deleteItem: PropTypes.func.isRequired
 }
 
 export default Item;

@@ -4,14 +4,6 @@ import { Consumer } from '../context';
 
 class Items extends Component {
 
-    deleteItem = (id) => {
-        const { items } = this.state;
-        const updatedItems = items.filter(item => item.id !== id);
-        this.setState({
-            items: updatedItems
-        })
-
-    }
     render() {
         return (
             <Consumer>
@@ -22,7 +14,6 @@ class Items extends Component {
                             {items.map(item => (
                                 <Item key={item.id} 
                                     item = {item} 
-                                    deleteItem = {() => this.deleteItem(item.id)}
                                 />
                             ))}
                          </>

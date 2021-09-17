@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {Consumer} from '../context';
 
 class Item extends Component {
     state = {
@@ -12,41 +13,54 @@ class Item extends Component {
         }))
     }
 
-    render() {
-        const {name, cp , sp} = this.props.item;
-        return (
-            <div className="card card-body mb-3">
-                <h4>
-                    {name}
-                    <i
-                        onClick={this.showItem}
-                        className="ml-1 mr-auto fa fa-sort-down"
-                        style={{ cursor: "pointer" }}>
-                    </i>
-                    <i
-                        className=" fa fa-times"
-                        onClick = {this.props.deleteItem}
-                        style = {{ float: 'right', cursor: 'pointer', color: 'red' }}
-                        >
-                    </i>
-                </h4>
-                {this.state.showInfo ?
-                    (<ul className="list-group">
-                        <li className="list-group-item">Cost Price : {cp}</li>
-                        <li className="list-group-item">Selling Price : {sp}</li>
-                    </ul>)
-                    :
-                    null
-                }
+    deleteItem = (id, dispatch) => {
+        dispatch({
+            type: 'DELETE_ITEM',
+            payload: id
+        })
+    }
 
-            </div>
+    render() {
+        const {id, name, cp , sp} = this.props.item;
+        return (
+            <Consumer>
+                {value => {
+                    const { dispatch } = value;
+                    return (
+                        <div className="card card-body mb-3">
+                            <h4>
+                                {name}
+                                <i
+                                    onClick={this.showItem}
+                                    className="ml-1 mr-auto fa fa-sort-down"
+                                    style={{ cursor: "pointer" }}>
+                                </i>
+                                <i
+                                    className=" fa fa-times"
+                                    onClick = {() => this.deleteItem(id, dispatch)}
+                                    style = {{ float: 'right', cursor: 'pointer', color: 'red' }}
+                                    >
+                                </i>
+                            </h4>
+                            {this.state.showInfo ?
+                                (<ul className="list-group">
+                                    <li className="list-group-item">Cost Price : {cp}</li>
+                                    <li className="list-group-item">Selling Price : {sp}</li>
+                                </ul>)
+                                :
+                                null
+                            }
+                        </div>
+                    )
+                }}
+            </Consumer>
         )
+        
     }
 }
 
 Item.propTypes = {
     item: PropTypes.object.isRequired,
-    deleteItem: PropTypes.func.isRequired
 }
 
 export default Item;

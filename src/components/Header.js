@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import { NavLink, Link } from 'react-router-dom';
 
 const Header = props => {
     return (
@@ -11,11 +12,21 @@ const Header = props => {
                 <div>
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <a href="/" className="nav-link">Home</a>
+                            <NavLink to = '/' className = "nav-link">
+                                <i className = "fa fa-home"></i> Home
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <a href="/" className="nav-link">Home</a>
+                            <NavLink to = '/additem' className = "nav-link">
+                                <i className = "fa fa-plus"></i> Add
+                            </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink to = '/about' className = "nav-link">
+                                <i className = "fa fa-question"></i> About
+                            </NavLink>
+                        </li>
+                        
                     </ul>
                 </div>
             </nav>

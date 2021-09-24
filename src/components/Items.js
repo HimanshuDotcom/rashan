@@ -11,6 +11,10 @@ class Items extends Component {
                     const { items } = value;
                     return (
                         <>
+                            <h1 
+                                className = "text-center mb-4 display-3">
+                                <span className = "text-danger ">Items</span> List
+                            </h1>
                             {items.map(item => (
                                 <Item key={item.id} 
                                     item = {item} 

@@ -35,6 +35,12 @@ class AddItem extends Component {
             type: 'ADD_ITEM',
             payload: this.state
         })
+        this.setState({
+            name: '',
+            cp: '',
+            sp: ''
+        })
+        this.props.history.push('/')
     }
     handleInput = (e) => {
         const name = e.target.name;

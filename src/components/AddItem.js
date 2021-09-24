@@ -7,11 +7,30 @@ class AddItem extends Component {
     state = {
         name : '',
         cp: '',
-        sp: ''
+        sp: '',
+        errors: {
+            name: '',
+            cp: '',
+            sp: ''
+        }
     };
 
     handleSubmit = (e,dispatch) => {
         e.preventDefault();
+        const {name, cp, sp} = this.state;
+        // check Errors 
+        if(name === '') {
+            this.setState({errors: {name : "Name is required"}});
+            return;
+        }
+        if(cp === '') {
+            this.setState({errors: {cp : "Cost Price is required"}});
+            return;  
+        }
+        if(sp === ''){
+            this.setState({errors: {sp : "Selling Price is required"}});
+            return;
+        }
         dispatch({
             type: 'ADD_ITEM',
             payload: this.state
@@ -26,7 +45,7 @@ class AddItem extends Component {
     }
 
     render() {
-        const {name, cp, sp} = this.state;
+        const {name, cp, sp, errors} = this.state;
         return (
             <Consumer>
                 {value => {
@@ -43,6 +62,7 @@ class AddItem extends Component {
                                         placeholder = "Enter item name"
                                         onChange = {this.handleInput}
                                         value = {name} 
+                                        error = {errors.name}
                                     />
                                     <TextInput
                                         label = "Cost Price"
@@ -50,7 +70,8 @@ class AddItem extends Component {
                                         type = "number"
                                         placeholder = "Enter Cost Price"
                                         onChange = {this.handleInput}
-                                        value = {cp} 
+                                        value = {cp}
+                                        error = {errors.cp} 
                                     />
                                     <TextInput
                                         label = "Selling Price"
@@ -59,6 +80,7 @@ class AddItem extends Component {
                                         placeholder = "Enter Selling Price"
                                         onChange = {this.handleInput}
                                         value = {sp} 
+                                        error = {errors.sp}
                                     />
                                     <input 
                                         type = "submit"

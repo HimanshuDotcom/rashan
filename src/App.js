@@ -2,11 +2,12 @@ import Header from './components/Header';
 import Items from './components/Items';
 import AddItem from './components/AddItem';
 import About from './components/About';
-import NotFound from './components/NorFound';
+import NotFound from './components/NotFound';
 import { Provider } from './context';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import EditItem from './components/EditItem';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Switch>
               <Route exact path = "/" component = {Items} />
               <Route exact path = '/additem' component = {AddItem} />
+              <Route exact path = '/edititem/:id' component = {EditItem} />
               <Route exact path = '/about' component = {About} />
               <Route component = {NotFound} />
             </Switch>

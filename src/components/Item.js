@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Consumer} from '../context';
+import { Link } from 'react-router-dom';
 
 class Item extends Component {
     state = {
@@ -19,6 +20,7 @@ class Item extends Component {
             payload: id
         })
     }
+
 
     render() {
         const {id, name, cp , sp} = this.props.item;
@@ -41,6 +43,13 @@ class Item extends Component {
                                     style = {{ float: 'right', cursor: 'pointer', color: 'red' }}
                                     >
                                 </i>
+                                <Link to = {`/edititem/${id}`} style = {{ textDecoration: 'none'}}>
+                                    <i
+                                        className = "fa fa-edit"
+                                        style = {{ float: 'right', marginRight: '20px' }}
+                                    >
+                                    </i>
+                                </Link>
                             </h4>
                             {this.state.showInfo ?
                                 (<ul className="list-group">

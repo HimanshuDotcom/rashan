@@ -17,7 +17,7 @@ class Items extends Component {
                             </h1>
                             {items.map(item => (
                                 <Item key={item.id} 
-                                    item = {item} 
+                                    item = {item}
                                 />
                             ))}
                          </>

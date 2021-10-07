@@ -52,6 +52,7 @@ class AddItem extends Component {
 
     render() {
         const {name, cp, sp, errors} = this.state;
+        this.setState()
         return (
             <Consumer>
                 {value => {

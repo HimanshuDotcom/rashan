@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { applyMiddleware, createStore } from 'redux';
-// import thunk from 'redux-thunk';
+import thunk from "redux-thunk";
 
 const initialState = {
     items: [],
@@ -49,25 +49,8 @@ const reducer = (state = initialState, action) => {
             return state;
     }
 }
-const thunk = ({dispatch, getState}) => (next) => (action) => {
-    if(typeof(action) === 'function') {
-      console.log('I AM CALLfED', dispatch)
-      action(dispatch);
-      return;
-    }
-    next(action);
-}
-const store = createStore(reducer, applyMiddleware(thunk));
-const Context = React.createContext();
-
 
 export class Provider extends Component {
-
-    // state = {
-    //     items: [],
-    //     loading: true,
-    //     dispatch: action => this.setState(state => reducer(state,action))
-    // };
 
     render() {
         return (
@@ -78,6 +61,10 @@ export class Provider extends Component {
     }
 }
 
-console.log(store);
+const store = createStore(reducer, applyMiddleware(thunk));
+const Context = React.createContext();
+
+
+
 
 export const Consumer = Context.Consumer;

@@ -1,11 +1,15 @@
 import firestore from "./firebase";
 import  {onSnapshot,doc, getDocs, addDoc, collection } from 'firebase/firestore';
 
+export const setItems = (items) => ({
+    type: 'SET_ITEMS',
+    payload: items
+})
+
 export const fetchItems = () => {
     return async function (dispatch) {
         const d= collection(firestore, 'items')
         const mySnapshot =  await getDocs(d);
-        // console.log('I AM CKJSDFJK')
         const items = [];
         mySnapshot.forEach(doc => {
               const data = doc.data();
@@ -15,9 +19,6 @@ export const fetchItems = () => {
         ) 
         console.log('items', items)
 
-        dispatch({
-        type: 'SET_ITEMS',
-        payload: items
-        })
+        dispatch(setItems(items));
     }
 }

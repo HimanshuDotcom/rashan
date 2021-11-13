@@ -8,13 +8,16 @@ class Items extends Component {
         return (
             <Consumer>
                 {value => {
-                    const { items } = value;
+                    console.log('VALUE', value.getState())
+                    const { items, loading } = value.getState();
+                    console.log(items, loading)
                     return (
                         <>
                             <h1 
                                 className = "text-center mb-4 display-3">
                                 <span className = "text-danger ">Items</span> List
                             </h1>
+                            {loading && <h1 className = "text-center mt-5">Loading Items .....</h1>}
                             {items.map(item => (
                                 <Item key={item.id} 
                                     item = {item}

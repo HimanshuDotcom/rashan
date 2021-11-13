@@ -31,9 +31,14 @@ class AddItem extends Component {
             this.setState({errors: {sp : "Selling Price is required"}});
             return;
         }
+        const item = {
+            name: this.state.name,
+            cp: this.state.cp,
+            sp : this.state.sp
+        }
         dispatch({
             type: 'ADD_ITEM',
-            payload: this.state
+            payload: item
         })
         this.setState({
             name: '',
@@ -52,7 +57,6 @@ class AddItem extends Component {
 
     render() {
         const {name, cp, sp, errors} = this.state;
-        this.setState()
         return (
             <Consumer>
                 {value => {

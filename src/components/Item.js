@@ -28,6 +28,7 @@ class Item extends Component {
             <Consumer>
                 {value => {
                     const { dispatch } = value;
+                    console.log('item',value);
                     return (
                         <div className="card card-body mb-3">
                             <h4>

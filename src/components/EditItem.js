@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TextInput from './TextInput'
 import { Consumer } from '../context';
+import { addToItems, editFromItems } from '../action';
 
 export default class EditItem extends Component {
 
@@ -17,10 +18,11 @@ export default class EditItem extends Component {
         item.name = this.nameRef.current.value;
         item.cp = this.cpRef.current.value;
         item.sp = this.spRef.current.value;
-        dispatch({
-            type: 'EDIT_ITEM',
-            payload: item
-        })
+        // dispatch({
+        //     type: 'EDIT_ITEM',
+        //     payload: item
+        // })
+        dispatch(editFromItems(item))
         this.props.history.push('/')
     }
     
@@ -29,9 +31,11 @@ export default class EditItem extends Component {
         return (
             <Consumer>
                {value => {
-                   const { items, dispatch } = value;
+                   console.log('value', value)
+                   const {dispatch} = value;
+                   const { items } = value.getState();
                    const item = items.filter(el => el.id == id)[0];
-                   console.log(dispatch)
+                   if(item === undefined) return;
                    return (
                     <div className = "card container p-0 mb-5">
                         <div className = "card-header text-center">Edit Item</div>

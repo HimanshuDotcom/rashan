@@ -17,7 +17,6 @@ class App extends React.Component {
 
   componentDidMount() {
     const {store} = this.props;
-    console.log('storee', store)
     store.subscribe(() => {
       this.forceUpdate();
     })
@@ -26,7 +25,7 @@ class App extends React.Component {
 
  render() {
   const { dispatch } = this.props.store;
-  console.log('dipatchh', dispatch)
+  
   return (
     <Router>
         <div className="App">

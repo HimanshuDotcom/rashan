@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Consumer} from '../context';
 import { Link } from 'react-router-dom';
+import { deleteFromItems } from '../action';
 
 class Item extends Component {
     state = {
@@ -15,20 +16,17 @@ class Item extends Component {
     }
 
     deleteItem = (id, dispatch) => {
-        dispatch({
-            type: 'DELETE_ITEM',
-            payload: id
-        })
+        dispatch(deleteFromItems(id));
     }
 
 
     render() {
         const {id, name, cp , sp} = this.props.item;
+
         return (
             <Consumer>
                 {value => {
                     const { dispatch } = value;
-                    console.log('item',value);
                     return (
                         <div className="card card-body mb-3">
                             <h4>

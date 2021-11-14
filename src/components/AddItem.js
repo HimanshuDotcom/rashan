@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import  TextInput  from './TextInput';
 import { Consumer } from '../context';
+import { addToItems } from "../action";
 
 class AddItem extends Component {
 
@@ -36,10 +37,11 @@ class AddItem extends Component {
             cp: this.state.cp,
             sp : this.state.sp
         }
-        dispatch({
-            type: 'ADD_ITEM',
-            payload: item
-        })
+        // dispatch({
+        //     type: 'ADD_ITEM',
+        //     payload: item
+        // })
+        dispatch(addToItems(item));
         this.setState({
             name: '',
             cp: '',

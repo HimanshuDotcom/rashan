@@ -8,9 +8,7 @@ class Items extends Component {
         return (
             <Consumer>
                 {value => {
-                    console.log('VALUE', value.getState())
                     const { items, loading } = value.getState();
-                    console.log(items, loading)
                     return (
                         <>
                             <h1 

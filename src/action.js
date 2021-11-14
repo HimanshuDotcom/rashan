@@ -1,5 +1,5 @@
 import firestore from "./firebase";
-import  {onSnapshot,doc, getDocs, addDoc, collection } from 'firebase/firestore';
+import  {onSnapshot,doc, getDocs, addDoc, deleteDoc, collection, setDoc } from 'firebase/firestore';
 
 export const setItems = (items) => ({
     type: 'SET_ITEMS',
@@ -20,5 +20,23 @@ export const fetchItems = () => {
         console.log('items', items)
 
         dispatch(setItems(items));
+    }
+}
+
+export const addToItems = (item) => {
+    return async function (dispatch) {
+        const x = await addDoc(collection(firestore, 'items'), item);
+    }
+}
+
+export const deleteFromItems = (id) => {
+    return async function (dispatch) {
+        const x = await deleteDoc(doc(firestore,'items',id));
+    }
+}
+
+export const editFromItems = (item) => {
+    return async function (dispatch) {
+        const x = await setDoc(doc(firestore,'items',item.id), item);
     }
 }

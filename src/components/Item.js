@@ -15,7 +15,8 @@ class Item extends Component {
         }))
     }
 
-    deleteItem = (id, dispatch) => {
+    deleteItem = (e,id, dispatch) => {
+        e.target.style.color = 'blue';
         dispatch(deleteFromItems(id));
     }
 
@@ -38,8 +39,8 @@ class Item extends Component {
                                 </i>
                                 <i
                                     className=" fa fa-times"
-                                    onClick = {() => this.deleteItem(id, dispatch)}
-                                    style = {{ float: 'right', cursor: 'pointer', color: 'red' }}
+                                    onClick = {(e) => this.deleteItem(e,id, dispatch)}
+                                    style = {{ float: 'right', cursor: 'pointer', color: 'red', opacity: '5' }}
                                     >
                                 </i>
                                 <Link to = {`/edititem/${id}`} style = {{ textDecoration: 'none'}}>

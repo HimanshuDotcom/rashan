@@ -7,9 +7,9 @@ React Application
 
 ## Screenshots
 
-![Home Page](https://github.com/HimanshuDotcom/rashan/blob/master/images/homepage.jpg?raw=true)
+![Home Page](https://github.com/HimanshuDotcom/rashan/blob/master/images/homepage.png?raw=true)
 
-![Add Item](https://github.com/HimanshuDotcom/rashan/blob/master/images/additem.jpg?raw=true)
+![Add Item](https://github.com/HimanshuDotcom/rashan/blob/master/images/additem.png?raw=true)
   
 ## Features
 

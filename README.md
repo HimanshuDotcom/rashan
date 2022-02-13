@@ -30,7 +30,7 @@ React Application
 Clone the project
 
 ```bash
-  git clone 
+   git clone https://github.com/HimanshuDotcom/rashan.git
 ```
 
 Go to the project directory
